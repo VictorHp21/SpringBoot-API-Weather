@@ -1,0 +1,30 @@
+# =============================
+#  GERAL - PROTEÇÃO E LIMPEZA
+# =============================
+
+# Ignorar arquivos de ambiente (segurança)
+.env
+
+# Ignorar IDEs
+.idea/
+*.iml
+
+# Ignorar build do Maven/Gradle
+target/
+out/
+
+# Ignorar logs
+*.log
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# =============================
+#  ESPECÍFICO DO PROJETO
+# =============================
+
+# Ignorar Maven Wrapper se quiser deixar limpo
+SpringBoot/demo/.mvn/
+SpringBoot/demo/mvnw
+SpringBoot/demo/mvnw.cmd
