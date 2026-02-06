@@ -45,7 +45,7 @@ public class WeatherService {
             JsonNode json = mapper.readTree(response);
 
             WeatherResponse weather = new WeatherResponse();
-            
+
             weather.setCity(json.get("resolvedAddress").asText());
             weather.setCurrentTemp(json.get("currentConditions").get("temp").asDouble());
             weather.setDescription(json.get("currentConditions").get("conditions").asText());
