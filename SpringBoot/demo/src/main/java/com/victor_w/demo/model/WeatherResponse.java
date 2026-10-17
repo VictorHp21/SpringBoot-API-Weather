@@ -11,10 +11,13 @@ import java.util.List;
 @AllArgsConstructor
 public class WeatherResponse {
 
-    private String city;
-    private Double currentTemp;
+    private String cidade;
+    private Double temperatura;
+    private Double possibilidadeChuva;
+    private Double umidade;
+    private Double velocidadeVento;
     private String description;
-    private List<DayForecast> days;
+    private List<DayForecast> diasSemana;
 
 
 
@@ -28,7 +31,24 @@ public class WeatherResponse {
         private String conditions;
 
 
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public void setTempmax(Double tempmax) {
+            this.tempmax = tempmax;
+        }
+
+        public void setTempmin(Double tempmin) {
+            this.tempmin = tempmin;
+        }
+
+        public void setConditions(String conditions) {
+            this.conditions = conditions;
+        }
     }
+
+
 
 
 }
