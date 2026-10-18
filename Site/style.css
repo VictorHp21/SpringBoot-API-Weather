@@ -1,178 +1,363 @@
+@property --c1 { syntax: "<color>"; inherits: false; initial-value: #1f5bb8; }
+@property --c2 { syntax: "<color>"; inherits: false; initial-value: #4a90e2; }
+@property --c3 { syntax: "<color>"; inherits: false; initial-value: #f4b350; }
 
-/*Card*/
+:root {
+  --tinta: #17283B;
+  --fundo: #E3EBF1;
+  --sol: #FFB627;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --texto: "Instrument Sans", system-ui, sans-serif;
+}
 
-/* From Uiverse.io by KSAplay */ 
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 180px;
-  width: 280px;
-  border-radius: 25px;
-  background: lightgrey;
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--texto);
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  transition: 100ms ease;
-  box-shadow: rgba(0, 0, 0, 0.15) 2px 3px 4px;
+  clip-path: inset(50%);
 }
 
-/* ---------- Info section ---------- */
+button, input { font: inherit; }
 
-.info-section {
-  position: relative;
+:focus-visible { outline: 2px solid var(--sol); outline-offset: 3px; }
+
+.pagina {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(28px, 7vw, 80px) 20px;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.busca__campo {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 75%;
-  color: white;
+  gap: 6px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px -18px rgba(23, 40, 59, 0.5);
 }
 
-.left-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  z-index: 1;
-  padding-left: 18px;
+.busca input {
+  flex: 1;
+  min-width: 0;
+  padding: 0 20px;
+  border: 0;
+  background: none;
+  color: var(--tinta);
+  font-size: 1.05rem;
 }
 
-button {
-  display: block;
-  border: none;
-  background: transparent;
-}
+.busca input:focus-visible { outline: none; }
+.busca__campo:focus-within { outline: 2px solid var(--sol); outline-offset: 2px; }
 
-.weather {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 5px;
-}
-
-.weather div {
-  display: flex;
-  align-items: center;
-}
-
-.weather div:nth-child(1) {
-  width: 40%;
-  height: auto;
-}
-
-.temperature {
-  font-size: 34pt;
-  font-weight: 500;
-  line-height: 8%;
-}
-
-.right-side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  height: 100%;
-  padding-right: 18px;
-  z-index: 1;
-}
-
-.right-side > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.hour {
-  font-size: 19pt;
-  line-height: 1em;
-}
-
-.date {
-  font-size: 15px;
-}
-
-/* ---------- Background ---------- */
-.background-design {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: #ec7263;
-  overflow: hidden;
-}
-
-.circle {
-  background-color: #efc745;
-}
-
-.circle:nth-child(1) {
-  position: absolute;
-  top: -80%;
-  right: -50%;
-  width: 300px;
-  height: 300px;
-  opacity: 0.4;
-  border-radius: 50%;
-}
-
-.circle:nth-child(2) {
-  position: absolute;
-  top: -70%;
-  right: -30%;
-  width: 210px;
-  height: 210px;
-  opacity: 0.4;
-  border-radius: 50%;
-}
-
-.circle:nth-child(3) {
-  position: absolute;
-  top: -35%;
-  right: -8%;
-  width: 100px;
-  height: 100px;
-  opacity: 1;
-  border-radius: 50%;
-}
-
-/* ---------- Days section ---------- */
-.days-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 25%;
-  background-color: #974859;
-  gap: 2px;
-  box-shadow: inset 0px 2px 5px #974859;
-}
-
-.days-section button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: #a75265;
-  box-shadow: inset 0px 2px 5px #974859;
+.busca button {
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--tinta);
+  color: #fff;
+  font-weight: 600;
   cursor: pointer;
-  transition: 100ms ease;
-  gap: 5px;
+  transition: background 0.2s;
 }
 
-.days-section button:hover {
-  scale: 0.9;
-  border-radius: 10px;
+.busca button:hover { background: #28435f; }
+
+.aviso {
+  min-height: 1.5em;
+  margin: 16px 8px 24px;
+  color: #4b6076;
 }
 
-.days-section .day {
-  font-size: 10pt;
-  font-weight: 500;
-  color: white;
-  opacity: 0.7;
+.clima {
+  --c1: #1f5bb8;
+  --c2: #4a90e2;
+  --c3: #f4b350;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(22px, 4vw, 38px);
+  border-radius: 30px;
+  color: #fff;
+  background: linear-gradient(165deg, var(--c1) 0%, var(--c2) 58%, var(--c3) 140%);
+  box-shadow: 0 34px 60px -32px rgba(23, 40, 59, 0.6);
+  transition: --c1 0.7s, --c2 0.7s, --c3 0.7s;
 }
 
-.icon-weather-day {
+.clima[hidden] { display: none; }
+
+.clima[data-tema="parcial"] { --c1: #2b5d9e; --c2: #6f9bc9; --c3: #e6c88f; }
+.clima[data-tema="nublado"] { --c1: #3b4658; --c2: #6a778b; --c3: #a7b2c0; }
+.clima[data-tema="chuva"] { --c1: #1a2147; --c2: #2f4580; --c3: #5b78b8; }
+.clima[data-tema="tempestade"] { --c1: #14172e; --c2: #2a2f5c; --c3: #5a4e86; }
+
+.ceu {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ceu::before {
+  content: "";
+  position: absolute;
+  top: -190px;
+  right: -130px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 120, 0.55), rgba(255, 214, 120, 0) 65%);
+  opacity: 0;
+  transition: opacity 0.7s;
+  animation: pulsar 7s ease-in-out infinite alternate;
+}
+
+.clima[data-tema="sol"] .ceu::before,
+.clima[data-tema="parcial"] .ceu::before { opacity: 1; }
+
+.ceu::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s;
+  background-image:
+    linear-gradient(105deg, transparent 48%, rgba(255, 255, 255, 0.38) 50%, transparent 52%),
+    linear-gradient(105deg, transparent 48%, rgba(255, 255, 255, 0.22) 50%, transparent 52%);
+  background-size: 34px 130px, 21px 80px;
+  animation: chover 0.8s linear infinite;
+}
+
+.clima[data-tema="chuva"] .ceu::after,
+.clima[data-tema="tempestade"] .ceu::after { opacity: 0.45; }
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+}
+
+.agora {
   display: flex;
   align-items: center;
-  width: 20px;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.icone svg { display: block; width: 96px; height: 96px; }
+
+.temp {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--display);
+  font-size: clamp(3.8rem, 11vw, 5.6rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.unidade {
+  display: flex;
+  margin: 0.55rem 0 0 8px;
+  font-family: var(--texto);
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+
+.unidade button {
+  padding: 2px 8px;
+  border: 0;
+  background: none;
+  color: inherit;
+  opacity: 0.55;
+  cursor: pointer;
+}
+
+.unidade button + button { border-left: 1px solid rgba(255, 255, 255, 0.5); }
+.unidade button.on { opacity: 1; }
+
+.detalhes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  opacity: 0.88;
+}
+
+.local { text-align: right; }
+
+.local h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.local p { margin: 4px 0 0; opacity: 0.8; }
+
+.abas {
+  display: flex;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.abas button {
+  padding: 6px 0 8px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.abas button[aria-selected="true"] {
+  border-color: var(--sol);
+  opacity: 1;
+}
+
+.faixa { overflow-x: auto; margin: 0 -8px; padding: 0 8px 4px; }
+.faixa__interno { min-width: 640px; }
+
+.grafico {
+  position: relative;
+  height: 150px;
+  margin-top: 20px;
+}
+
+.grafico svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
+  overflow: visible;
+  animation: revelar 1s cubic-bezier(0.3, 0.7, 0.2, 1) both;
+}
+
+.grafico.parado svg { animation: none; }
+
+.area { fill: url(#areaG); }
+.linha { fill: none; stroke: var(--sol); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.linha--min { stroke: rgba(255, 255, 255, 0.45); stroke-width: 2; stroke-dasharray: 4 6; }
+
+.pt { position: absolute; width: 0; height: 0; }
+
+.pt i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sol);
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s, background 0.25s;
+}
+
+.pt b {
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0.72;
+  transition: bottom 0.25s, opacity 0.25s;
+}
+
+.pt.sel i { background: #fff; transform: translate(-50%, -50%) scale(1.9); }
+.pt.sel b { bottom: 18px; opacity: 1; font-size: 0.95rem; }
+
+.dias {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.dia {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 2px;
+  border: 0;
+  border-radius: 16px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.dia:hover { background: rgba(255, 255, 255, 0.09); }
+.dia.ativo { background: rgba(255, 255, 255, 0.17); }
+.dia svg { width: 46px; height: 46px; }
+.dia__nome { font-size: 0.95rem; opacity: 0.88; }
+.dia__temps { font-size: 0.92rem; }
+.dia__temps b { font-weight: 600; }
+.dia__temps span { margin-left: 5px; opacity: 0.6; }
+
+.sol rect { fill: #FF9F0A; }
+.sol circle { fill: #FFC21F; }
+.nuvem { fill: #EEF2F7; }
+.nuvem.cinza { fill: #B4BFCC; }
+.nuvem.escura { fill: #7C879C; }
+.gota { fill: #4DA3FF; }
+.raio { fill: #FFD23F; }
+
+.ativo .raios,
+.icone .raios { transform-origin: 32px 32px; animation: girar 20s linear infinite; }
+
+.ativo .nuvem,
+.icone .nuvem { animation: deriva 6s ease-in-out infinite alternate; }
+
+.ativo .gota,
+.icone .gota { animation: cair 1.1s linear infinite; }
+
+.ativo .gota.g2, .icone .gota.g2 { animation-delay: 0.35s; }
+.ativo .gota.g3, .icone .gota.g3 { animation-delay: 0.7s; }
+
+.ativo .raio,
+.icone .raio { animation: piscar 2.4s steps(1) infinite; }
+
+@keyframes girar { to { transform: rotate(360deg); } }
+@keyframes deriva { from { transform: translateX(-2px); } to { transform: translateX(3px); } }
+@keyframes cair { from { transform: translateY(0); opacity: 1; } to { transform: translateY(7px); opacity: 0; } }
+@keyframes piscar { 0%, 100% { opacity: 1; } 8% { opacity: 0.2; } 14% { opacity: 1; } 20% { opacity: 0.35; } 26% { opacity: 1; } }
+@keyframes pulsar { from { transform: scale(0.92); } to { transform: scale(1.08); } }
+@keyframes chover { from { background-position: 0 0, 0 0; } to { background-position: -34px 130px, -21px 80px; } }
+@keyframes revelar { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 -10px 0 0); } }
+
+@media (max-width: 640px) {
+  .local { text-align: left; }
+  .busca button { padding: 14px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
