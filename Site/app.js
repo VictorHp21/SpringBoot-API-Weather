@@ -68,9 +68,9 @@ function normalizar(json, cidade) {
       data: String(d.date).slice(0, 10),
       max: d.tempmax,
       min: d.tempmin,
-      chuva: d.precipprob,
-      umidade: d.humidity,
-      vento: d.windspeed,
+      chuva: d.possibilidadeChuva,
+      umidade: d.umidade,
+      vento: d.velocidadeVento,
       condicao: d.conditions
     }))
     .filter(d => d.data >= hoje)
@@ -167,7 +167,7 @@ function desenharGrafico(animar) {
 function cabecalho() {
   const d = estado.dias[estado.indice];
   const ehHoje = d.data === iso(new Date());
-  const a = ehHoje && estado.atual ? estado.atual : {};
+  const a = estado.indice === 0 && estado.atual ? estado.atual : {};
   const condicao = a.condicao ?? d.condicao;
   const tipo = tipoCondicao(condicao);
   const data = new Date(`${d.data}T00:00:00`);
@@ -179,10 +179,14 @@ function cabecalho() {
   painel.dataset.tema = tipo;
   document.getElementById("icone").innerHTML = icone(tipo);
   document.getElementById("temp").textContent = graus(a.temperatura ?? d.max);
-  const mostrar = (v, unidade) => (v == null ? "–" : `${Math.round(v)}${unidade}`);
-  document.getElementById("d-chuva").textContent = mostrar(a.chuva ?? d.chuva, "%");
-  document.getElementById("d-umidade").textContent = mostrar(a.umidade ?? d.umidade, "%");
-  document.getElementById("d-vento").textContent = mostrar(a.vento ?? d.vento, " km/h");
+  const mostrar = (id, v, unidade) => {
+    const el = document.getElementById(id);
+    el.textContent = v == null ? "" : `${Math.round(v)}${unidade}`;
+    el.parentElement.hidden = v == null;
+  };
+  mostrar("d-chuva", a.chuva ?? d.chuva, "%");
+  mostrar("d-umidade", a.umidade ?? d.umidade, "%");
+  mostrar("d-vento", a.vento ?? d.vento, " km/h");
   document.getElementById("quando").textContent = quando;
   document.getElementById("condicao").textContent = DESCRICAO[tipo];
 }

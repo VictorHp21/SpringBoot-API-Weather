@@ -4,7 +4,7 @@
 
 :root {
   --tinta: #17283B;
-  --fundo: #E3EBF1;
+  --fundo: #0E1621;
   --sol: #FFB627;
   --display: "Bricolage Grotesque", system-ui, sans-serif;
   --texto: "Instrument Sans", system-ui, sans-serif;
@@ -44,6 +44,7 @@ h1 {
   font-size: clamp(1.6rem, 4vw, 2.3rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: white;
 }
 
 .busca__campo {
@@ -84,7 +85,7 @@ h1 {
 .aviso {
   min-height: 1.5em;
   margin: 16px 8px 24px;
-  color: #4b6076;
+  color: #9DB0C3;
 }
 
 .clima {
@@ -98,7 +99,7 @@ h1 {
   border-radius: 30px;
   color: #fff;
   background: linear-gradient(165deg, var(--c1) 0%, var(--c2) 58%, var(--c3) 140%);
-  box-shadow: 0 34px 60px -32px rgba(23, 40, 59, 0.6);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.06);
   transition: --c1 0.7s, --c2 0.7s, --c3 0.7s;
 }
 

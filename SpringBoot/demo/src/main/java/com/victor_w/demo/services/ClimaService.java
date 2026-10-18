@@ -101,6 +101,18 @@ public class ClimaService {
                 previsao.setTempmin(dia.path("tempmin").asDouble());
                 previsao.setConditions(dia.path("conditions").asText());
 
+                previsao.setPossibilidadeChuva(dia.path("precipprob").isNumber()
+                        ? dia.path("precipprob").asDouble()
+                        : null)
+                ;
+                previsao.setUmidade(dia.path("humidity").isNumber()
+                        ? dia.path("humidity").asDouble()
+                        : null);
+
+                previsao.setVelocidadeVento(dia.path("windspeed").isNumber()
+                        ? dia.path("windspeed").asDouble()
+                        : null);
+
                 previsoes.add(previsao);
             }
 
