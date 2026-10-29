@@ -19,7 +19,8 @@ public class CorsConfig {
                 registry.addMapping("/clima")
                         .allowedOrigins(
                                 "http://localhost:5500", // posteriormente colocar link front
-                                "http://127.0.0.1:5500"
+                                "http://127.0.0.1:5500",
+                                "https://victorhp21.github.io/SpringBoot-API-Weather/"
                         )
                         .allowedMethods("GET", "OPTIONS")
                         .allowedHeaders("*");
