@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/clima";
+const API_URL = "https://springboot-api-weather.onrender.com/clima";
 const MODO_DEMO = new URLSearchParams(location.search).has("demo");
 
 const formulario = document.getElementById("busca");
