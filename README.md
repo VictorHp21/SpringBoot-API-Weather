@@ -1,5 +1,7 @@
 🌦️ Projeto Weather API
 
+Link para acesso: https://victorhp21.github.io/SpringBoot-API-Weather/
+
 Este projeto foi criado como uma forma de colocar em prática os conhecimentos que venho adquirindo em Spring Boot, além de testar a integração entre uma API externa de meteorologia e uma interface web simples feita em HTML, CSS e JavaScript.
 
 A ideia é consumir dados reais de clima e exibi-los de forma interativa em um card visual, com previsão para os próximos dias.
